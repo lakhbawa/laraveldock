@@ -24,3 +24,11 @@ DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
+
+## Customization
+
+### Adding Additional PHP Extentions:
+
+Check the follwing link and customize the Dockerfile according to your need
+
+https://github.com/mlocati/docker-php-extension-installer
