@@ -11,7 +11,7 @@ This is super clean docker setup for Laravel 8 application. you can adjust it ac
 
 ## Steps
 
-- put your laravel code inside `code` directory
+- create new directory named `code` and put your laravel code inside `code` directory
 - run `docker-compose up -d`
 
 ## Env File Setup for Laravel
