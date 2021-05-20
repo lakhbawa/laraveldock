@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - APP_CODE_PATH_HOST=./code
+        - APP_CODE_PATH_CONTAINER=/var/www
     image: lakhveerbawa.com/php
     container_name: app
     restart: unless-stopped

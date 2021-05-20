@@ -1,10 +1,12 @@
 FROM php:8.0.6-fpm
 
+ARG APP_CODE_PATH_HOST=./code
+ARG APP_CODE_PATH_CONTAINER=/var/www
 # Copy composer.lock and composer.json
-COPY code/composer.lock code/composer.json /var/www/
+COPY ${APP_CODE_PATH_HOST}/composer.lock ${APP_CODE_PATH_HOST}/composer.json ${APP_CODE_PATH_CONTAINER}/
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR ${APP_CODE_PATH_CONTAINER}
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -41,10 +43,10 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY code /var/www
+COPY ${APP_CODE_PATH_HOST} ${APP_CODE_PATH_CONTAINER}
 
 # Copy existing application directory permissions
-COPY --chown=www:www code /var/www
+COPY --chown=www:www ${APP_CODE_PATH_HOST} ${APP_CODE_PATH_CONTAINER}
 
 # Change current user to www
 USER www
