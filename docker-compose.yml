@@ -55,6 +55,19 @@ services:
       - ./config/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+      UPLOAD_LIMIT: 400M
+    networks:
+      - app-network
 
 #Docker Networks
 networks:
